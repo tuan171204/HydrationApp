@@ -46,11 +46,9 @@ HydrationApp/
 1. Truy cập [openweathermap.org](https://openweathermap.org/api)
 2. Đăng ký tài khoản miễn phí
 3. Vào **API Keys** → copy key (kích hoạt sau ~2 giờ)
-4. Mở file `WeatherFetcher.java`, thay dòng:
-   ```java
-   public static final String API_KEY = "YOUR_API_KEY_HERE";
-   // →
-   public static final String API_KEY = "abc123xyz..."; // key của bạn
+4. Mở hoặc tạo file `local.properties` theo file mẫu `local.properties.example`, viết:
+   ```
+   WEATHER_API_KEY="<api_key>"
    ```
 
 ### Bước 2 — Mở trong Android Studio
