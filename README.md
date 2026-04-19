@@ -50,7 +50,7 @@ HydrationApp/
    ```java
    public static final String API_KEY = "YOUR_API_KEY_HERE";
    // →
-   public static final String API_KEY = "abc123xyz..."; // key của bạn
+   public static final String API_KEY = "abc123xyz..."; // key của bạn, key trong dự án đã reset, hãy chèn key của bản thân vào
    ```
 
 ### Bước 2 — Mở trong Android Studio
