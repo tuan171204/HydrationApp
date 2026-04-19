@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hydration App</string>
+    <string name="title_history">Lịch sử uống nước</string>
+    <string name="title_stats">Thống kê 7 ngày</string>
+    <string name="title_profile">Hồ sơ &amp; Cài đặt</string>
+
+    <!-- Main -->
+    <string name="label_today_progress">Hôm nay</string>
+    <string name="label_weather">Thời tiết</string>
+    <string name="label_loading_weather">Đang tải thời tiết…</string>
+    <string name="btn_drink_150">+150 ml</string>
+    <string name="btn_drink_250">+250 ml</string>
+    <string name="btn_drink_500">+500 ml</string>
+    <string name="btn_drink_custom">Tùy chỉnh…</string>
+
+    <!-- Nav -->
+    <string name="nav_history">Lịch sử</string>
+    <string name="nav_stats">Thống kê</string>
+    <string name="nav_profile">Hồ sơ</string>
+
+    <!-- History -->
+    <string name="empty_history">Chưa có dữ liệu.\nHãy uống nước và ghi lại nhé! 💧</string>
+
+    <!-- Profile -->
+    <string name="label_weight">Cân nặng (kg)</string>
+    <string name="hint_weight">Ví dụ: 60</string>
+    <string name="label_city">Thành phố</string>
+    <string name="hint_city">Ví dụ: Hanoi, Ho Chi Minh City</string>
+    <string name="label_reminder">Nhắc nhở thông minh</string>
+    <string name="btn_save">Lưu cài đặt</string>
+    <string name="btn_test_noti">Gửi thông báo thử</string>
+
+    <!-- Stats -->
+    <string name="label_average">Trung bình/ngày</string>
+    <string name="label_best_day">Ngày tốt nhất</string>
+    <string name="label_total_week">Tổng tuần</string>
+    <string name="label_streak">Chuỗi ngày đạt mục tiêu</string>
+
+    <!-- Notification -->
+    <string name="noti_title">💧 Đến giờ uống nước rồi!</string>
+</resources>

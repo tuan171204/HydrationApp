@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#F5F9FF</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="colorAccent">#03A9F4</color>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#0D47A1</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="nav_active">#1976D2</color>
+    <color name="nav_inactive">#9E9E9E</color>
+    <color name="statusBarColor">#0D47A1</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_hint">#BDBDBD</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="water_blue">#42A5F5</color>
+    <color name="water_good">#4CAF50</color>
+    <color name="water_low">#FF5252</color>
+    <color name="water_medium">#FFD740</color>
+    <color name="white">#FFFFFF</color>
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="card_margin">12dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="nav_height">64dp</dimen>
+    <dimen name="progress_height">20dp</dimen>
+    <dimen name="text_body">15sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <string name="app_name">Hydration App</string>
+    <string name="btn_drink_150">+150 ml</string>
+    <string name="btn_drink_250">+250 ml</string>
+    <string name="btn_drink_500">+500 ml</string>
+    <string name="btn_drink_custom">Tùy chỉnh…</string>
+    <string name="btn_save">Lưu cài đặt</string>
+    <string name="btn_test_noti">Gửi thông báo thử</string>
+    <string name="empty_history">Chưa có dữ liệu.\nHãy uống nước và ghi lại nhé! 💧</string>
+    <string name="hint_city">Ví dụ: Hanoi, Ho Chi Minh City</string>
+    <string name="hint_weight">Ví dụ: 60</string>
+    <string name="label_average">Trung bình/ngày</string>
+    <string name="label_best_day">Ngày tốt nhất</string>
+    <string name="label_city">Thành phố</string>
+    <string name="label_loading_weather">Đang tải thời tiết…</string>
+    <string name="label_reminder">Nhắc nhở thông minh</string>
+    <string name="label_streak">Chuỗi ngày đạt mục tiêu</string>
+    <string name="label_today_progress">Hôm nay</string>
+    <string name="label_total_week">Tổng tuần</string>
+    <string name="label_weather">Thời tiết</string>
+    <string name="label_weight">Cân nặng (kg)</string>
+    <string name="nav_history">Lịch sử</string>
+    <string name="nav_profile">Hồ sơ</string>
+    <string name="nav_stats">Thống kê</string>
+    <string name="noti_title">💧 Đến giờ uống nước rồi!</string>
+    <string name="title_history">Lịch sử uống nước</string>
+    <string name="title_profile">Hồ sơ &amp; Cài đặt</string>
+    <string name="title_stats">Thống kê 7 ngày</string>
+    <style name="CardWater">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="android:layout_margin">12dp</item>
+    </style>
+    <style name="DrinkButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="cornerRadius">24dp</item>
+    </style>
+    <style name="StatLabel">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+    <style name="StatValue">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.HydrationApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+</resources>

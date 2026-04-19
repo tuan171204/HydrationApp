@@ -1,0 +1,209 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.hydration.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Quyền truy cập Internet để gọi OpenWeather API -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\HydrationApp\app\src\main\AndroidManifest.xml:5:5-67
+12-->C:\HydrationApp\app\src\main\AndroidManifest.xml:5:22-64
+13    <!-- Quyền gửi notification -->
+14    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+14-->C:\HydrationApp\app\src\main\AndroidManifest.xml:7:5-77
+14-->C:\HydrationApp\app\src\main\AndroidManifest.xml:7:22-74
+15    <!-- Quyền dùng AlarmManager để lên lịch nhắc nhở -->
+16    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+16-->C:\HydrationApp\app\src\main\AndroidManifest.xml:9:5-79
+16-->C:\HydrationApp\app\src\main\AndroidManifest.xml:9:22-76
+17    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+17-->C:\HydrationApp\app\src\main\AndroidManifest.xml:10:5-74
+17-->C:\HydrationApp\app\src\main\AndroidManifest.xml:10:22-71
+18    <!-- Quyền nhận broadcast khi máy khởi động (để restore alarm) -->
+19    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+19-->C:\HydrationApp\app\src\main\AndroidManifest.xml:12:5-81
+19-->C:\HydrationApp\app\src\main\AndroidManifest.xml:12:22-78
+20
+21    <permission
+21-->[androidx.core:core:1.9.0] C:\Users\tito7\.gradle\caches\transforms-3\b49944afb40ba9f9ee145c6bac204d68\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+22        android:name="com.hydration.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.9.0] C:\Users\tito7\.gradle\caches\transforms-3\b49944afb40ba9f9ee145c6bac204d68\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.9.0] C:\Users\tito7\.gradle\caches\transforms-3\b49944afb40ba9f9ee145c6bac204d68\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+24
+25    <uses-permission android:name="com.hydration.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.9.0] C:\Users\tito7\.gradle\caches\transforms-3\b49944afb40ba9f9ee145c6bac204d68\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.9.0] C:\Users\tito7\.gradle\caches\transforms-3\b49944afb40ba9f9ee145c6bac204d68\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+26
+27    <application
+27-->C:\HydrationApp\app\src\main\AndroidManifest.xml:14:5-71:19
+28        android:allowBackup="true"
+28-->C:\HydrationApp\app\src\main\AndroidManifest.xml:15:9-35
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.9.0] C:\Users\tito7\.gradle\caches\transforms-3\b49944afb40ba9f9ee145c6bac204d68\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+30        android:debuggable="true"
+31        android:extractNativeLibs="false"
+32        android:icon="@mipmap/ic_launcher"
+32-->C:\HydrationApp\app\src\main\AndroidManifest.xml:16:9-43
+33        android:label="@string/app_name"
+33-->C:\HydrationApp\app\src\main\AndroidManifest.xml:17:9-41
+34        android:roundIcon="@mipmap/ic_launcher_round"
+34-->C:\HydrationApp\app\src\main\AndroidManifest.xml:18:9-54
+35        android:supportsRtl="true"
+35-->C:\HydrationApp\app\src\main\AndroidManifest.xml:19:9-35
+36        android:testOnly="true"
+37        android:theme="@style/Theme.HydrationApp" >
+37-->C:\HydrationApp\app\src\main\AndroidManifest.xml:20:9-50
+38
+39        <!-- MainActivity: màn hình chính -->
+40        <activity
+40-->C:\HydrationApp\app\src\main\AndroidManifest.xml:23:9-31:20
+41            android:name="com.hydration.app.activities.MainActivity"
+41-->C:\HydrationApp\app\src\main\AndroidManifest.xml:24:13-52
+42            android:exported="true"
+42-->C:\HydrationApp\app\src\main\AndroidManifest.xml:25:13-36
+43            android:windowSoftInputMode="adjustResize" >
+43-->C:\HydrationApp\app\src\main\AndroidManifest.xml:26:13-55
+44            <intent-filter>
+44-->C:\HydrationApp\app\src\main\AndroidManifest.xml:27:13-30:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\HydrationApp\app\src\main\AndroidManifest.xml:28:17-69
+45-->C:\HydrationApp\app\src\main\AndroidManifest.xml:28:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\HydrationApp\app\src\main\AndroidManifest.xml:29:17-77
+47-->C:\HydrationApp\app\src\main\AndroidManifest.xml:29:27-74
+48            </intent-filter>
+49        </activity>
+50
+51        <!-- HistoryActivity: lịch sử uống nước -->
+52        <activity
+52-->C:\HydrationApp\app\src\main\AndroidManifest.xml:34:9-37:69
+53            android:name="com.hydration.app.activities.HistoryActivity"
+53-->C:\HydrationApp\app\src\main\AndroidManifest.xml:35:13-55
+54            android:exported="false"
+54-->C:\HydrationApp\app\src\main\AndroidManifest.xml:36:13-37
+55            android:parentActivityName="com.hydration.app.activities.MainActivity" />
+55-->C:\HydrationApp\app\src\main\AndroidManifest.xml:37:13-66
+56
+57        <!-- ProfileActivity: hồ sơ người dùng -->
+58        <activity
+58-->C:\HydrationApp\app\src\main\AndroidManifest.xml:40:9-43:69
+59            android:name="com.hydration.app.activities.ProfileActivity"
+59-->C:\HydrationApp\app\src\main\AndroidManifest.xml:41:13-55
+60            android:exported="false"
+60-->C:\HydrationApp\app\src\main\AndroidManifest.xml:42:13-37
+61            android:parentActivityName="com.hydration.app.activities.MainActivity" />
+61-->C:\HydrationApp\app\src\main\AndroidManifest.xml:43:13-66
+62
+63        <!-- StatsActivity: biểu đồ thống kê -->
+64        <activity
+64-->C:\HydrationApp\app\src\main\AndroidManifest.xml:46:9-49:69
+65            android:name="com.hydration.app.activities.StatsActivity"
+65-->C:\HydrationApp\app\src\main\AndroidManifest.xml:47:13-53
+66            android:exported="false"
+66-->C:\HydrationApp\app\src\main\AndroidManifest.xml:48:13-37
+67            android:parentActivityName="com.hydration.app.activities.MainActivity" />
+67-->C:\HydrationApp\app\src\main\AndroidManifest.xml:49:13-66
+68
+69        <!--
+70            ReminderReceiver: BroadcastReceiver nhận alarm từ AlarmManager
+71            Đây là cách Android gửi notification - không hard-code giờ cố định
+72        -->
+73        <receiver
+73-->C:\HydrationApp\app\src\main\AndroidManifest.xml:55:9-57:40
+74            android:name="com.hydration.app.receivers.ReminderReceiver"
+74-->C:\HydrationApp\app\src\main\AndroidManifest.xml:56:13-55
+75            android:exported="false" />
+75-->C:\HydrationApp\app\src\main\AndroidManifest.xml:57:13-37
+76
+77        <!--
+78            BootReceiver: Khôi phục alarm sau khi máy khởi động lại
+79            Vì AlarmManager bị xóa khi tắt máy
+80        -->
+81        <receiver
+81-->C:\HydrationApp\app\src\main\AndroidManifest.xml:63:9-69:20
+82            android:name="com.hydration.app.receivers.BootReceiver"
+82-->C:\HydrationApp\app\src\main\AndroidManifest.xml:64:13-51
+83            android:exported="true" >
+83-->C:\HydrationApp\app\src\main\AndroidManifest.xml:65:13-36
+84            <intent-filter>
+84-->C:\HydrationApp\app\src\main\AndroidManifest.xml:66:13-68:29
+85                <action android:name="android.intent.action.BOOT_COMPLETED" />
+85-->C:\HydrationApp\app\src\main\AndroidManifest.xml:67:17-79
+85-->C:\HydrationApp\app\src\main\AndroidManifest.xml:67:25-76
+86            </intent-filter>
+87        </receiver>
+88
+89        <provider
+89-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+90            android:name="androidx.startup.InitializationProvider"
+90-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+91            android:authorities="com.hydration.app.androidx-startup"
+91-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+92            android:exported="false" >
+92-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+93            <meta-data
+93-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+94-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+95                android:value="androidx.startup" />
+95-->[androidx.emoji2:emoji2:1.2.0] C:\Users\tito7\.gradle\caches\transforms-3\a9fa59866425669855b183e64788e2a9\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+96            <meta-data
+96-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\tito7\.gradle\caches\transforms-3\cddb4680f538cb8236635c301166d59d\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+97-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\tito7\.gradle\caches\transforms-3\cddb4680f538cb8236635c301166d59d\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+98                android:value="androidx.startup" />
+98-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\tito7\.gradle\caches\transforms-3\cddb4680f538cb8236635c301166d59d\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+99            <meta-data
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+100                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+101                android:value="androidx.startup" />
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+102        </provider>
+103
+104        <receiver
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+105            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+106            android:directBootAware="false"
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+107            android:enabled="true"
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+108            android:exported="true"
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+109            android:permission="android.permission.DUMP" >
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+111                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+111-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+114                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+115            </intent-filter>
+116            <intent-filter>
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+117                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+118            </intent-filter>
+119            <intent-filter>
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+120                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\tito7\.gradle\caches\transforms-3\9981ebd574fd23ecc418db082b9bb2f4\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+121            </intent-filter>
+122        </receiver>
+123    </application>
+124
+125</manifest>
