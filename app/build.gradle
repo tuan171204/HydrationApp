@@ -2,9 +2,18 @@ plugins {
     id 'com.android.application'
 }
 
+Properties properties = new Properties()
+if (project.rootProject.file('local.properties').canRead()) {
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+}
+
 android {
     namespace 'com.hydration.app'
     compileSdk 34
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId "com.hydration.app"
@@ -13,6 +22,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def apiKey = properties.getProperty('WEATHER_API_KEY', '""')
+
+        buildConfigField "String", "WEATHER_API_KEY", apiKey
     }
 
     buildTypes {

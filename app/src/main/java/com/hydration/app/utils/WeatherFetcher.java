@@ -3,6 +3,7 @@ package com.hydration.app.utils;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.hydration.app.BuildConfig;
 import com.hydration.app.models.WeatherData;
 
 import org.json.JSONArray;
@@ -54,7 +55,8 @@ public class WeatherFetcher extends AsyncTask<String, Void, WeatherData> {
 
     // API Key của OpenWeatherMap - sinh viên cần đăng ký miễn phí tại openweathermap.org
     // Thay thế bằng key thực khi chạy
-    public static final String API_KEY = "7ef626919bdb5f9e766b0650a13ca64c";
+    public static final String API_KEY = BuildConfig.WEATHER_API_KEY;
+
 
     private static final int CONNECT_TIMEOUT = 10000; // 10 giây
     private static final int READ_TIMEOUT    = 10000;

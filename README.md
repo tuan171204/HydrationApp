@@ -85,9 +85,9 @@ dependencyResolutionManagement {
 
 ---
 
-## 📱 Demo cho giảng viên
+## 📱 Demo 
 
-### Kịch bản demo (5-7 phút)
+### Kịch bản 
 
 | Bước | Thao tác | Giải thích cho GV |
 |------|----------|-------------------|
@@ -98,201 +98,6 @@ dependencyResolutionManagement {
 | 5 | Mở Stats | "GROUP BY date trong SQLite, vẽ BarChart" |
 | 6 | Bấm Test Notification | "AlarmManager trigger BroadcastReceiver" |
 | 7 | Giải thích smart logic | "Interval tính theo lượng còn thiếu + giờ còn lại" |
-
----
-
-## 🎓 Giải thích theo kiến thức môn học
-
-### 1. Lập trình mạng (Networking)
-
-**File:** `WeatherFetcher.java`
-
-```java
-// Dùng HttpURLConnection - lớp thuần Java
-URL url = new URL(urlString);
-HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-connection.setRequestMethod("GET");
-connection.setConnectTimeout(10000);
-connection.connect();
-
-// Đọc response
-BufferedReader reader = new BufferedReader(
-    new InputStreamReader(connection.getInputStream())
-);
-```
-
-**Điểm quan trọng:** Network call KHÔNG được chạy trên Main Thread → sẽ bị lỗi `NetworkOnMainThreadException`. Phải dùng AsyncTask hoặc Executor.
-
----
-
-### 2. RESTful API
-
-**Endpoint đang dùng:**
-```
-GET https://api.openweathermap.org/data/2.5/weather?q=Hanoi&appid=KEY&units=metric
-```
-
-| Thành phần | Giá trị | Ý nghĩa |
-|------------|---------|---------|
-| **Method** | `GET` | Chỉ đọc dữ liệu → đúng nguyên tắc REST |
-| **Resource** | `/weather` | Tài nguyên muốn lấy |
-| **Params** | `q=Hanoi` | Bộ lọc theo thành phố |
-| **Auth** | `appid=KEY` | API key xác thực |
-| **Format** | `units=metric` | Celsius thay vì Kelvin |
-
-**Parse JSON thủ công** (không dùng Gson/Jackson):
-```java
-JSONObject root = new JSONObject(jsonString);
-JSONObject main = root.getJSONObject("main");
-double temp     = main.getDouble("temp");       // 33.5
-int humidity    = main.getInt("humidity");       // 80
-String city     = root.getString("name");       // "Hanoi"
-```
-
-**Tại sao là RESTful?**
-- **Stateless:** Mỗi request có đủ thông tin, server không lưu session
-- **Resource-based URL:** `/weather` thay vì `/getWeatherData`
-- **HTTP Method đúng nghĩa:** GET để đọc, không dùng POST
-
----
-
-### 3. SQLite Database
-
-**File:** `DatabaseHelper.java`
-
-```java
-// Kế thừa SQLiteOpenHelper - chuẩn Android
-public class DatabaseHelper extends SQLiteOpenHelper {
-
-    // onCreate: chạy 1 lần khi tạo DB lần đầu
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE water_entries (" +
-            "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "amount INTEGER NOT NULL, " +
-            "timestamp TEXT NOT NULL, " +
-            "note TEXT DEFAULT ''" +
-        ")");
-    }
-
-    // INSERT
-    public long insertWaterEntry(int amount) {
-        ContentValues values = new ContentValues();
-        values.put("amount", amount);
-        values.put("timestamp", getCurrentTimestamp());
-        return db.insert("water_entries", null, values);
-    }
-
-    // QUERY - tổng hôm nay
-    public int getTodayTotal() {
-        Cursor cursor = db.rawQuery(
-            "SELECT SUM(amount) FROM water_entries WHERE date(timestamp) = ?",
-            new String[]{ getTodayDate() }
-        );
-        cursor.moveToFirst();
-        return cursor.getInt(0);
-    }
-}
-```
-
-**Khi nào dùng SQLite vs SharedPreferences?**
-- **SQLite:** Dữ liệu nhiều record, cần query/filter/sort (lịch sử uống nước)
-- **SharedPreferences:** Dữ liệu đơn giản key-value (cân nặng, thành phố, cài đặt)
-
----
-
-### 4. Async Processing
-
-**Cách 1 — AsyncTask** (trong `WeatherFetcher.java`):
-```java
-public class WeatherFetcher extends AsyncTask<String, Void, WeatherData> {
-
-    @Override
-    protected WeatherData doInBackground(String... params) {
-        // ← Chạy trên BACKGROUND THREAD
-        // Thực hiện network call ở đây
-        return callWeatherAPI(params[0]);
-    }
-
-    @Override
-    protected void onPostExecute(WeatherData result) {
-        // ← Chạy trên MAIN THREAD (UI Thread)
-        // Cập nhật UI ở đây
-        callback.onSuccess(result);
-    }
-}
-```
-
-**Cách 2 — Executor** (trong `ReminderReceiver.java`):
-```java
-// Hiện đại hơn AsyncTask, Android khuyến dùng từ API 30+
-Executors.newSingleThreadExecutor().execute(() -> {
-    // Background work ở đây
-    WeatherFetcher.fetch(city, callback);
-});
-```
-
-**Tại sao cần Async?**
-- Main Thread = UI Thread: chịu trách nhiệm render UI mỗi 16ms
-- Network call có thể mất vài giây → block Main Thread → app bị đơ → ANR crash
-
----
-
-### 5. UI Android (XML Layout)
-
-**Các component đã dùng:**
-
-| Component | File | Mục đích |
-|-----------|------|---------|
-| `ProgressBar` | activity_main.xml | Hiển thị % lượng nước hôm nay |
-| `EditText` | activity_profile.xml | Nhập cân nặng, thành phố |
-| `Button` | activity_main.xml | Nút +150ml, +250ml, +500ml |
-| `RecyclerView` | activity_history.xml | Danh sách lịch sử uống nước |
-| `Switch` | activity_profile.xml | Bật/tắt nhắc nhở |
-| `CardView` | tất cả layouts | Container với bo góc và shadow |
-
-**RecyclerView cần 3 thành phần:**
-```java
-// 1. LayoutManager - quyết định cách sắp xếp items
-recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-// 2. Adapter - kết nối data với View
-adapter = new WaterEntryAdapter(entries);
-recyclerView.setAdapter(adapter);
-
-// 3. ViewHolder (trong Adapter) - cache reference tới Views
-// → tránh gọi findViewById() lặp lại khi scroll
-```
-
----
-
-### 6. Smart Notification Logic
-
-**Công thức tính mục tiêu ngày:**
-```
-dailyGoal = (weight × 35) + max(0, temp - 25) × 50 + (humidity > 70% ? 200 : 0)
-```
-
-**Công thức tính interval nhắc (phút):**
-```
-remaining   = dailyGoal - consumed
-hoursLeft   = 22 - currentHour
-timesNeeded = ceil(remaining / 250)
-interval    = (hoursLeft × 60) / timesNeeded
-interval    = clamp(interval, 20, 180)
-```
-
-**Flow notification:**
-```
-MainActivity.addWater()
-    → db.insertWaterEntry()
-    → GoalCalculator.calculateReminderInterval()
-    → NotificationHelper.scheduleNextReminder()
-        → AlarmManager.setExactAndAllowWhileIdle()
-            → (sau X phút) ReminderReceiver.onReceive()
-                → NotificationHelper.showReminder()
-                → scheduleNextReminder() [lên lịch lần tiếp]
-```
 
 ---
 
@@ -331,7 +136,7 @@ Fix: BootReceiver đã xử lý → kiểm tra permission RECEIVE_BOOT_COMPLETED
 
 ---
 
-## 🔑 Điểm nổi bật để trình bày với giảng viên
+## 🔑 Điểm nổi bật 
 
 1. **Không hard-code giờ nhắc** — interval tính động dựa trên lượng nước còn thiếu và thời tiết
 2. **Offline-first** — cache thời tiết vào SharedPreferences, hoạt động tốt khi mất mạng
@@ -339,25 +144,3 @@ Fix: BootReceiver đã xử lý → kiểm tra permission RECEIVE_BOOT_COMPLETED
 4. **ViewHolder pattern** — tối ưu RecyclerView, tránh `findViewById()` lặp lại
 5. **Proper lifecycle** — `onResume()` refresh data, không dùng static state
 
----
-
-## 📊 Checklist yêu cầu môn học
-
-| Yêu cầu | File | Trạng thái |
-|---------|------|-----------|
-| HttpURLConnection / OkHttp | WeatherFetcher.java | ✅ HttpURLConnection |
-| Parse JSON thủ công | WeatherFetcher.java | ✅ org.json.JSONObject |
-| RESTful API + giải thích | README + WeatherFetcher | ✅ |
-| SQLiteOpenHelper | DatabaseHelper.java | ✅ |
-| INSERT | DatabaseHelper.insertWaterEntry() | ✅ |
-| QUERY | DatabaseHelper.getTodayTotal(), getAllEntries() | ✅ |
-| AsyncTask / Executor | WeatherFetcher + ReminderReceiver | ✅ Cả hai |
-| EditText | activity_profile.xml | ✅ |
-| Button | activity_main.xml | ✅ |
-| RecyclerView | HistoryActivity + Adapter | ✅ |
-| ProgressBar | activity_main.xml | ✅ |
-| Local notification | NotificationHelper + ReminderReceiver | ✅ |
-| Chart | StatsActivity + MPAndroidChart | ✅ BarChart |
-| Smart goal (weight + weather) | GoalCalculator.java | ✅ |
-| Không dùng Firebase | — | ✅ |
-| Không over-engineering | — | ✅ |
