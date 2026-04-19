@@ -1,0 +1,19 @@
+# Bắt buộc ignore (Môi trường cục bộ và file tự sinh)
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+
+# Thư mục Build chứa file nhị phân
+/build/
+/app/build/
+/captures/
+.externalNativeBuild
+.cxx
+local.properties
+
+# Keystore và cấu hình ký ứng dụng (Bảo mật)
+*.jks
+*.keystore
+keystore.properties
