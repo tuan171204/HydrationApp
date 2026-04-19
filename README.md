@@ -1,6 +1,6 @@
 # 💧 Smart Hydration Assistant
 ### Ứng dụng nhắc uống nước thông minh dựa trên ngữ cảnh
-**Môn: Lập trình Web & Ứng dụng di động | Java Android Native**
+**Môn: Lập trình Web & Ứng dụng di động nâng cao | Java Android Native**
 
 ---
 
